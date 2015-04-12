@@ -27,3 +27,11 @@ while True:
         k.tap_key(']')
     if msg == 'octava-2':
         k.tap_key('\\')
+    if msg == 'play':
+        k.type_string('play')
+    if msg == 'stop':
+        k.type_string('stop')
+    if msg == 'pause':
+        k.type_string('pause')
+    if msg == 'tap':
+        k.type_string('tap')
