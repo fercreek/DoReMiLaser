@@ -1,16 +1,21 @@
-import select, socket
 from pykeyboard import PyKeyboard
+import select, socket
+
+BROADCAST = '<broadcast>'
+IP_BROADCAST = '192.168.0.255'
 
 port = 12345  # where do you expect to get a msg?
 bufferSize = 1024 # whatever you need
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.bind(('<broadcast>', port))
-s.setblocking(0)
+s.bind((BROADCAST, port))
+# s.setblocking(0)
 k = PyKeyboard()
 
 while True:
+    # data, addr = s.recvfrom(1024)
     result = select.select([s],[],[])
     msg = result[0][0].recv(bufferSize)
+    # print msg
     print msg
 
     if msg == 'octava5':
